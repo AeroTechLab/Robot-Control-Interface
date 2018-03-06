@@ -1,0 +1,3 @@
+[submodule "plugin_loader"]
+	path = plugin_loader
+	url = https://github.com/LabDin/Plugin-Loader.git
