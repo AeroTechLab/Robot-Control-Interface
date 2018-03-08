@@ -21,6 +21,10 @@ As, from user's point of view, **axis** or **joint** control is fundamentally th
 :----------: | :----------: | :----------: | :----------: | :----------: | :----------: | :----------:
    8 bytes   |    8 bytes   |   8 bytes    |   8 bytes    |   8 bytes    |   8 bytes    |   8 bytes 
 
+## Robot State Control
+
+The interface also has methods for setting different [states](https://labdin.github.io/Robot-Control-Interface/robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496) for the robot control, whose behaviour can be implemented by the plug-in developer
+
 ## Usage
 
 **Robot Control Interface** consists of a single header of common variables and functions declaration. Simply include it in both plug-in and host projects
