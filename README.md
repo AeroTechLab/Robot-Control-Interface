@@ -27,5 +27,5 @@ As, from user's point of view, **axis** or **joint** control is fundamentally th
 
 ## Documentation
 
-Doxygen-generated detailed methods documentation available on a [GitHub Page](https://labdin.github.io/Robot-Control-Interface/robot__control_8h.html)
+Doxygen-generated detailed methods documentation available on a [GitHub Page](https://labdin.github.io/Robot-Control-Interface/classROBOT__CONTROL__INTERFACE.html)
 
