@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['robot_2dcontrol_2dinterface',['Robot-Control-Interface',['../index.html',1,'']]],
+  ['robot_20control_20interface',['Robot Control Interface',['../index.html',1,'']]],
   ['robot_5fcalibration',['ROBOT_CALIBRATION',['../robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496a5c1776b42b25dca07b29ce4a0750dcb1',1,'robot_control.h']]],
   ['robot_5fcontrol_2eh',['robot_control.h',['../robot__control_8h.html',1,'']]],
   ['robot_5fcontrol_5finterface',['ROBOT_CONTROL_INTERFACE',['../classROBOT__CONTROL__INTERFACE.html',1,'ROBOT_CONTROL_INTERFACE'],['../robot__control_8h.html#a5b951d86363ba53c1f434db7823c12f3',1,'ROBOT_CONTROL_INTERFACE():&#160;robot_control.h']]],

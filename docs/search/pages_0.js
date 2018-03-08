@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['robot_2dcontrol_2dinterface',['Robot-Control-Interface',['../index.html',1,'']]]
+  ['robot_20control_20interface',['Robot Control Interface',['../index.html',1,'']]]
 ];
