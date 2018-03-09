@@ -37,7 +37,7 @@ On a terminal, get the [GitHub code repository](https://github.com/LabDin/Robot-
 
 This code is dependent on macros from [Plug-in Loader](https://github.com/LabDin/Plugin-Loader) project, that is automatically linked as a [git submodule](https://chrisjean.com/git-submodules-adding-using-removing-and-updating/).
 
-To add that repository to your sources, navigate to the root project folder and clone them with:
+To add that repository to your sources, navigate to the root project folder and clone it with:
 
     $ cd <my_project_folder>
     $ git submodule update --init
