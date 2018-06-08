@@ -65,15 +65,17 @@ $(function() {
 <div class="title">Robot Control Interface </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Common robot control interface to be implemented by device specific plug-ins</p>
-<h2>The Joint/Axis Rationale</h2>
+<div class="textblock"><p>Common robot control interface to be implemented by device specific <a href="https://en.wikipedia.org/wiki/Plug-in_(computing)">plug-ins</a></p>
+<h2>Overview</h2>
+<p>From the point of view of a generic robotic control application, any robot could be seen as a <a href="https://en.wikipedia.org/wiki/Black_box">black-box</a> with inputs (<b>setpoints</b>) and outputs (<b>measurements</b>), regardless of its mechanism dynamics and control algorithm. <b>Robot Control Interface</b> tries to implement this abstraction layer, allowing for easy switching of devices and their pluggable software library implementation.</p>
+<h3>The Joint/Axis Rationale</h3>
 <p>Sometimes, when controlling a robot, the positions/velocities/interaction forces of interest aren't the ones over which we have direct control, the actuated joints, like when there is a 2-link robotic arm with motors on each revolution joint but we wish to control the cartesian (<b>x</b>,<b>y</b>) position of the end-effector tool.</p>
 <div class="image">
 <img src="http://www.intechopen.com/source/html/25813/media/fig2.png" width="600"/>
 </div>
  <p>In those cases, simple per actuator control isn't enough, as the variables of interest depend on the combination of all <b>joint</b> values. There's need for a higher-level control pass, that considers the robot kinematics/dynamics as a whole.</p>
 <p>In <b>Robot Control Interface</b>, those controlled robot variables/coordinates are named <b>axes</b> (as an analogy with joystick/gamepad axes that control motion). The higher-level control pass is responsible for performing conversions <b>from joint to axis space for measurement</b>, and <b>from axis to joint space for actuator control setpoint calculation</b>. It also involves things like <b>joint impedance estimation and modulation based on axes data</b> and <b>reading of extra sensors, that aren't components of joint actuators (like contact ones)</b>.</p>
-<p>With this, it is intended that robot control internals (for each implementation) are abstracted away, leaving the user/client to only worry about reading from joint/axes and writing to axes variables.</p>
+<p>With this, it is intended that robot control internals (for each plug-in implementation) are abstracted away, leaving the user/client to only worry about reading from joint/axes and writing to axes variables.</p>
 <p>As, from user's point of view, <b>axis</b> or <b>joint</b> control is fundamentally the same, they alse use <a href="https://labdin.github.io/Robot-Control-Interface/structRobotVariables.html">the same structure</a> of <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">double precision floating-point</a> control variables:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -81,12 +83,16 @@ $(function() {
 <tr class="markdownTableBody" class="markdownTableRowOdd">
 <td class="markdownTableBodyCenter">8 bytes  </td><td class="markdownTableBodyCenter">8 bytes  </td><td class="markdownTableBodyCenter">8 bytes  </td><td class="markdownTableBodyCenter">8 bytes  </td><td class="markdownTableBodyCenter">8 bytes  </td><td class="markdownTableBodyCenter">8 bytes  </td><td class="markdownTableBodyCenter">8 bytes   </td></tr>
 </table>
-<h2>Robot State Control</h2>
+<h3>Robot State Control</h3>
 <p>The interface also has methods for setting different <a href="https://labdin.github.io/Robot-Control-Interface/robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496">states</a> for the robot control, whose behaviour can be implemented by the plug-in developer</p>
 <h2>Usage</h2>
-<p><b>Robot Control Interface</b> consists of a single header of common variables and functions declaration. Simply include it in both plug-in and host projects</p>
+<p>On a terminal, get the <a href="https://github.com/LabDin/Robot-Control-Interface">GitHub code repository</a> with: </p><pre class="fragment">$ git clone https://github.com/LabDin/Robot-Control-Interface [&lt;my_project_folder&gt;]
+</pre><p>This code is dependent on macros from <a href="https://github.com/LabDin/Plugin-Loader">Plug-in Loader</a> project, that is automatically linked as a <a href="https://chrisjean.com/git-submodules-adding-using-removing-and-updating/">git submodule</a>.</p>
+<p>To add that repository to your sources, navigate to the root project folder and clone it with: </p><pre class="fragment">$ cd &lt;my_project_folder&gt;
+$ git submodule update --init
+</pre><p><b>Robot Control Interface</b> itself consists of a single header file of common variables and function declarations. Simply include it in both plug-in and host projects</p>
 <h2>Documentation</h2>
-<p>Doxygen-generated detailed methods documentation available on a <a href="https://labdin.github.io/Robot-Control-Interface/classROBOT__CONTROL__INTERFACE.html">GitHub Page</a> </p>
+<p>Doxygen-generated detailed methods documentation is available on a <a href="https://labdin.github.io/Robot-Control-Interface/classROBOT__CONTROL__INTERFACE.html">GitHub Page</a> </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

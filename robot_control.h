@@ -64,10 +64,8 @@ RobotVariables;
         INIT_FUNCTION( void, Interface, EndController, RobotController ) \
         INIT_FUNCTION( size_t, Interface, GetJointsNumber, RobotController ) \
         INIT_FUNCTION( const char**, Interface, GetJointNamesList, RobotController ) \
-        INIT_FUNCTION( const bool*, Interface, GetJointsChangedList, RobotController ) \
         INIT_FUNCTION( size_t, Interface, GetAxesNumber, RobotController ) \
         INIT_FUNCTION( const char**, Interface, GetAxisNamesList, RobotController ) \
-        INIT_FUNCTION( const bool*, Interface, GetAxesChangedList, RobotController ) \
         INIT_FUNCTION( void, Interface, SetControlState, RobotController, enum RobotState ) \
         INIT_FUNCTION( void, Interface, RunControlStep, RobotController, RobotVariables**, RobotVariables**, RobotVariables**, RobotVariables**, double )
         
