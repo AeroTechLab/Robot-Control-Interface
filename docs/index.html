@@ -71,7 +71,7 @@ $(function() {
 <h3>The Joint/Axis Rationale</h3>
 <p>Sometimes, when controlling a robot, the positions/velocities/interaction forces of interest aren't the ones over which we have direct control, the actuated joints, like when there is a 2-link robotic arm with motors on each revolution joint but we wish to control the cartesian (<b>x</b>,<b>y</b>) position of the end-effector tool.</p>
 <div class="image">
-<img src="http://www.intechopen.com/source/html/25813/media/fig2.png" width="600"/>
+<img src="https://raw.githubusercontent.com/LabDin/Robot-Control-Interface/master/docs/img/joints_axes.png" width="600"/>
 </div>
  <p>In those cases, simple per actuator control isn't enough, as the variables of interest depend on the combination of all <b>joint</b> values. There's need for a higher-level control pass, that considers the robot kinematics/dynamics as a whole.</p>
 <p>In <b>Robot Control Interface</b>, those controlled robot variables/coordinates are named <b>axes</b> (as an analogy with joystick/gamepad axes that control motion). The higher-level control pass is responsible for performing conversions <b>from joint to axis space for measurement</b>, and <b>from axis to joint space for actuator control setpoint calculation</b>. It also involves things like <b>joint impedance estimation and modulation based on axes data</b> and <b>reading of extra sensors, that aren't components of joint actuators (like contact ones)</b>.</p>

@@ -10,7 +10,7 @@ From the point of view of a generic robotic control application, any robot could
 Sometimes, when controlling a robot, the positions/velocities/interaction forces of interest aren't the ones over which we have direct control, the actuated joints, like when there is a 2-link robotic arm with motors on each revolution joint but we wish to control the cartesian (**x**,**y**) position of the end-effector tool. 
 
 <p align="center">
-  <img src="http://www.intechopen.com/source/html/25813/media/fig2.png" width="600"/>
+  <img src="https://raw.githubusercontent.com/LabDin/Robot-Control-Interface/master/docs/img/joints_axes.png" width="600"/>
 </p>
 
 In those cases, simple per actuator control isn't enough, as the variables of interest depend on the combination of all **joint** values. There's need for a higher-level control pass, that considers the robot kinematics/dynamics as a whole.
