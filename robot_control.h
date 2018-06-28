@@ -36,10 +36,6 @@
 
 #include "plugin_loader/loader_macros.h"
 
-#define ROBOT_CONTROLLER_INVALID_HANDLE NULL    ///< Reference/pointer to be returned on controller creation failure
-
-typedef void* RobotController;                 ///< Generic/opaque type to reference robot/actuator controllers
-
 /// Defined possible control states enumeration. Passed to generic or plugin specific robot control implementations
 enum RobotState 
 { 
@@ -60,14 +56,14 @@ RobotVariables;
 
 /// Robot control interface declaration macro, using [Plug-in Loader](https://github.com/LabDin/Plugin-Loader) convention
 #define ROBOT_CONTROL_INTERFACE( Interface, INIT_FUNCTION ) \
-        INIT_FUNCTION( RobotController, Interface, InitController, const char* ) \
-        INIT_FUNCTION( void, Interface, EndController, RobotController ) \
-        INIT_FUNCTION( size_t, Interface, GetJointsNumber, RobotController ) \
-        INIT_FUNCTION( const char**, Interface, GetJointNamesList, RobotController ) \
-        INIT_FUNCTION( size_t, Interface, GetAxesNumber, RobotController ) \
-        INIT_FUNCTION( const char**, Interface, GetAxisNamesList, RobotController ) \
-        INIT_FUNCTION( void, Interface, SetControlState, RobotController, enum RobotState ) \
-        INIT_FUNCTION( void, Interface, RunControlStep, RobotController, RobotVariables**, RobotVariables**, RobotVariables**, RobotVariables**, double )
+        INIT_FUNCTION( bool, Interface, InitController, const char* ) \
+        INIT_FUNCTION( void, Interface, EndController, void ) \
+        INIT_FUNCTION( size_t, Interface, GetJointsNumber, void ) \
+        INIT_FUNCTION( const char**, Interface, GetJointNamesList, void ) \
+        INIT_FUNCTION( size_t, Interface, GetAxesNumber, void ) \
+        INIT_FUNCTION( const char**, Interface, GetAxisNamesList, void ) \
+        INIT_FUNCTION( void, Interface, SetControlState, enum RobotState ) \
+        INIT_FUNCTION( void, Interface, RunControlStep, RobotVariables**, RobotVariables**, RobotVariables**, RobotVariables**, double )
         
 #endif  // ROBOT_CONTROL_H
     
@@ -76,20 +72,18 @@ RobotVariables;
 /// @brief Robot control methods to be implemented by plugins
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE
-/// @fn RobotController InitController( const char* configurationString )                                                                                
+/// @fn bool InitController( const char* configurationString )                                                                                
 /// @brief Calls plugin specific robot controller initialization  
 /// @param configurationString string containing the robot/plugin specific configuration
-/// @return generic pointer/reference to the created controller  
+/// @return true on successful initialization, false otherwise  
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE
-/// @fn void EndController( RobotController controller )
+/// @fn void EndController( void )
 /// @brief Calls plugin specific robot controller data deallocation                              
-/// @param[in] controller reference to robot controller being terminated 
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE        
-/// @fn void RunControlStep( RobotController controller, RobotVariables** jointMeasuresList, RobotVariables** axisMeasuresList, RobotVariables** jointSetpointsList, RobotVariables** axisSetpointsList, double timeDelta )                                                                        
+/// @fn void RunControlStep( RobotVariables** jointMeasuresList, RobotVariables** axisMeasuresList, RobotVariables** jointSetpointsList, RobotVariables** axisSetpointsList, double timeDelta )                                                                        
 /// @brief Calls plugin specific logic to process single control pass and joints/axes coordinate conversions
-/// @param[in] controller reference to robot controller being updated
 /// @param[in,out] jointMeasuresList list of per degree-of-freedom control variables representing current robot joints measures                                    
 /// @param[in,out] axisMeasuresList list of per degree-of-freedom control variables representing current robot effector measures                                             
 /// @param[in,out] jointSetpointsList list of per degree-of-freedom control variables representing robot joints desired states
@@ -97,33 +91,28 @@ RobotVariables;
 /// @param[in] timeDelta time (in seconds) since the last control pass was called
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE        
-/// @fn void SetControlState( RobotController controller, enum RobotState controlState )
+/// @fn void SetControlState( enum RobotState controlState )
 /// @brief Pass control state to trigger possible plugin specific behaviour
-/// @param[in] controller reference to robot controller being updated
 /// @param[in] controlState member of state enumeration defined in control_definitions.h
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE        
-/// @fn size_t GetJointsNumber( RobotController controller )
+/// @fn size_t GetJointsNumber( void )
 /// @brief Get number of joint coordinates/degrees-of-freedom for given robot
-/// @param[in] controller reference to robot corresponding controller
 /// @return number of coordinates/degrees-of-freedom
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE        
-/// @fn char** GetJointNamesList( RobotController controller )
+/// @fn char** GetJointNamesList( void )
 /// @brief Get names of all joints for given robot
-/// @param[in] controller reference to robot corresponding controller
 /// @return list of joint name strings
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE        
-/// @fn size_t GetAxesNumber( RobotController controller )
+/// @fn size_t GetAxesNumber( void )
 /// @brief Get number of axis coordinates/degrees-of-freedom for given robot
-/// @param[in] controller reference to robot corresponding controller
 /// @return number of coordinates/degrees-of-freedom
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE        
 /// @fn char** GetAxisNamesList( RobotController controller )
 /// @brief Get names of all axes for given robot
-/// @param[in] controller reference to robot corresponding controller
 /// @return list of effector axis name strings
 ///
 /// @memberof ROBOT_CONTROL_INTERFACE
