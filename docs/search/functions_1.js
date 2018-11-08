@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['getaxesnumber',['GetAxesNumber',['../classROBOT__CONTROL__INTERFACE.html#a5f3d656b53216f1b15a83635186d3010',1,'ROBOT_CONTROL_INTERFACE']]],
+  ['getaxesnumber',['GetAxesNumber',['../classROBOT__CONTROL__INTERFACE.html#a67c741c6c22823d3cbb882c10c0afe37',1,'ROBOT_CONTROL_INTERFACE']]],
   ['getaxisnameslist',['GetAxisNamesList',['../classROBOT__CONTROL__INTERFACE.html#aa13cff67914efaf4510eb8798df2eed2',1,'ROBOT_CONTROL_INTERFACE']]],
-  ['getjointnameslist',['GetJointNamesList',['../classROBOT__CONTROL__INTERFACE.html#a87774c40f3ccbcc7525aace142e8328e',1,'ROBOT_CONTROL_INTERFACE']]],
-  ['getjointsnumber',['GetJointsNumber',['../classROBOT__CONTROL__INTERFACE.html#a15cfb7156faa5e6c4a77d278dfb3b466',1,'ROBOT_CONTROL_INTERFACE']]]
+  ['getjointnameslist',['GetJointNamesList',['../classROBOT__CONTROL__INTERFACE.html#aa82680378984f1980c57edce4415b83f',1,'ROBOT_CONTROL_INTERFACE']]],
+  ['getjointsnumber',['GetJointsNumber',['../classROBOT__CONTROL__INTERFACE.html#a140f2739cd2a6a864e0e384ff8a3397a',1,'ROBOT_CONTROL_INTERFACE']]]
 ];
