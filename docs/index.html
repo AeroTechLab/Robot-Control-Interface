@@ -68,7 +68,7 @@ $(function() {
 <h3>The Joint/Axis Rationale</h3>
 <p>Sometimes, when controlling a robot, the positions/velocities/interaction forces of interest aren't the ones over which we have direct control, the actuated joints, like when there is a 2-link robotic arm with motors on each revolution joint but we wish to control the cartesian (<b>x</b>,<b>y</b>) position of the end-effector tool.</p>
 <div class="image">
-<img src="https://raw.githubusercontent.com/LabDin/Robot-Control-Interface/master/docs/img/joints_axes.png" width="600"/>
+<img src="https://raw.githubusercontent.com/EESC-MKGroup/Robot-Control-Interface/master/docs/img/joints_axes.png" width="600"/>
 </div>
  <p>In those cases, simple per actuator control isn't enough, as the variables of interest depend on the combination of all <b>joint</b> values. There's need for a higher-level control pass, that considers the robot kinematics/dynamics as a whole.</p>
 <p>In <b>Robot Control Interface</b>, those controlled robot variables/coordinates are named <b>axes</b> (as an analogy with joystick/gamepad axes that control motion). The higher-level control pass is responsible for performing conversions <b>from joint to axis space for measurement</b>, and <b>from axis to joint space for actuator control setpoint calculation</b>. It also involves things like <b>joint impedance estimation and modulation based on axes data</b> and <b>reading of extra sensors, that aren't components of joint actuators (like contact ones)</b>.</p>
@@ -83,8 +83,8 @@ $(function() {
 <h3>Robot State Control</h3>
 <p>The interface also has methods for setting different <a href="https://labdin.github.io/Robot-Control-Interface/robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496">states</a> for the robot control, whose behaviour can be implemented by the plug-in developer</p>
 <h2>Usage</h2>
-<p>On a terminal, get the <a href="https://github.com/LabDin/Robot-Control-Interface">GitHub code repository</a> with: </p><pre class="fragment">$ git clone https://github.com/LabDin/Robot-Control-Interface [&lt;my_project_folder&gt;]
-</pre><p>This code is dependent on macros from <a href="https://github.com/LabDin/Plugin-Loader">Plug-in Loader</a> project, that is automatically linked as a <a href="https://chrisjean.com/git-submodules-adding-using-removing-and-updating/">git submodule</a>.</p>
+<p>On a terminal, get the <a href="https://github.com/EESC-MKGroup/Robot-Control-Interface">GitHub code repository</a> with: </p><pre class="fragment">$ git clone https://github.com/EESC-MKGroup/Robot-Control-Interface [&lt;my_project_folder&gt;]
+</pre><p>This code is dependent on macros from <a href="https://github.com/EESC-MKGroup/Plugin-Loader">Plug-in Loader</a> project, that is automatically linked as a <a href="https://chrisjean.com/git-submodules-adding-using-removing-and-updating/">git submodule</a>.</p>
 <p>To add that repository to your sources, navigate to the root project folder and clone it with: </p><pre class="fragment">$ cd &lt;my_project_folder&gt;
 $ git submodule update --init
 </pre><p><b>Robot Control Interface</b> itself consists of a single header file of common variables and function declarations. Simply include it in both plug-in and host projects</p>

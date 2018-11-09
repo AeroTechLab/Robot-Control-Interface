@@ -7,10 +7,10 @@ From the point of view of a generic robotic control application, any robot could
 
 ### The Joint/Axis Rationale
 
-Sometimes, when controlling a robot, the positions/velocities/interaction forces of interest aren't the ones over which we have direct control, the actuated joints, like when there is a 2-link robotic arm with motors on each revolution joint but we wish to control the cartesian (**x**,**y**) position of the end-effector tool. 
+Sometimes, when controlling a robot, the positions/velocities/interaction forces of interest aren't the ones over which we have direct control, the actuated joints, like when there is a 2-link robotic arm with motors on each revolution joint but we wish to control the cartesian (**x**,**y**) position of the end-effector tool.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/LabDin/Robot-Control-Interface/master/docs/img/joints_axes.png" width="600"/>
+  <img src="https://raw.githubusercontent.com/EESC-MKGroup/Robot-Control-Interface/master/docs/img/joints_axes.png" width="600"/>
 </p>
 
 In those cases, simple per actuator control isn't enough, as the variables of interest depend on the combination of all **joint** values. There's need for a higher-level control pass, that considers the robot kinematics/dynamics as a whole.
@@ -23,7 +23,7 @@ As, from user's point of view, **axis** or **joint** control is fundamentally th
 
   Position   |   Velocity   |    Force     | Acceleration |   Inertia    |  Stiffness   |   Damping
 :----------: | :----------: | :----------: | :----------: | :----------: | :----------: | :----------:
-   8 bytes   |    8 bytes   |   8 bytes    |   8 bytes    |   8 bytes    |   8 bytes    |   8 bytes 
+   8 bytes   |    8 bytes   |   8 bytes    |   8 bytes    |   8 bytes    |   8 bytes    |   8 bytes
 
 ### Robot State Control
 
@@ -31,11 +31,11 @@ The interface also has methods for setting different [states](https://labdin.git
 
 ## Usage
 
-On a terminal, get the [GitHub code repository](https://github.com/LabDin/Robot-Control-Interface) with:
+On a terminal, get the [GitHub code repository](https://github.com/EESC-MKGroup/Robot-Control-Interface) with:
 
-    $ git clone https://github.com/LabDin/Robot-Control-Interface [<my_project_folder>]
+    $ git clone https://github.com/EESC-MKGroup/Robot-Control-Interface [<my_project_folder>]
 
-This code is dependent on macros from [Plug-in Loader](https://github.com/LabDin/Plugin-Loader) project, that is automatically linked as a [git submodule](https://chrisjean.com/git-submodules-adding-using-removing-and-updating/).
+This code is dependent on macros from [Plug-in Loader](https://github.com/EESC-MKGroup/Plugin-Loader) project, that is automatically linked as a [git submodule](https://chrisjean.com/git-submodules-adding-using-removing-and-updating/).
 
 To add that repository to your sources, navigate to the root project folder and clone it with:
 
@@ -47,4 +47,3 @@ To add that repository to your sources, navigate to the root project folder and 
 ## Documentation
 
 Doxygen-generated detailed methods documentation is available on a [GitHub Page](https://labdin.github.io/Robot-Control-Interface/classROBOT__CONTROL__INTERFACE.html)
-

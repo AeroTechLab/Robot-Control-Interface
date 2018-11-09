@@ -54,7 +54,7 @@ typedef struct RobotVariables
 }
 RobotVariables;
 
-/// Robot control interface declaration macro, using [Plug-in Loader](https://github.com/LabDin/Plugin-Loader) convention
+/// Robot control interface declaration macro, using [Plug-in Loader](https://github.com/EESC-MKGroup/Plugin-Loader) convention
 #define ROBOT_CONTROL_INTERFACE( Interface, INIT_FUNCTION ) \
         INIT_FUNCTION( bool, Interface, InitController, const char* ) \
         INIT_FUNCTION( void, Interface, EndController, void ) \
