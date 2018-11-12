@@ -19,7 +19,7 @@ In **Robot Control Interface**, those controlled robot variables/coordinates are
 
 With this, it is intended that robot control internals (for each plug-in implementation) are abstracted away, leaving the user/client to only worry about reading from joint/axes and writing to axes variables.
 
-As, from user's point of view, **axis** or **joint** control is fundamentally the same, they alse use [the same structure](https://labdin.github.io/Robot-Control-Interface/structRobotVariables.html) of [double precision floating-point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) control variables:
+As, from user's point of view, **axis** or **joint** control is fundamentally the same, they alse use [the same structure](https://eesc-mkgroup.github.io/Robot-Control-Interface/structRobotVariables.html) of [double precision floating-point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) control variables:
 
   Position   |   Velocity   |    Force     | Acceleration |   Inertia    |  Stiffness   |   Damping
 :----------: | :----------: | :----------: | :----------: | :----------: | :----------: | :----------:
@@ -27,7 +27,7 @@ As, from user's point of view, **axis** or **joint** control is fundamentally th
 
 ### Robot State Control
 
-The interface also has methods for setting different [states](https://labdin.github.io/Robot-Control-Interface/robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496) for the robot control, whose behaviour can be implemented by the plug-in developer
+The interface also has methods for setting different [states](https://eesc-mkgroup.github.io/Robot-Control-Interface/robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496) for the robot control, whose behaviour can be implemented by the plug-in developer
 
 ## Usage
 
@@ -46,4 +46,4 @@ To add that repository to your sources, navigate to the root project folder and 
 
 ## Documentation
 
-Doxygen-generated detailed methods documentation is available on a [GitHub Page](https://labdin.github.io/Robot-Control-Interface/classROBOT__CONTROL__INTERFACE.html)
+Doxygen-generated detailed methods documentation is available on a [GitHub Page](https://eesc-mkgroup.github.io/Robot-Control-Interface/classROBOT__CONTROL__INTERFACE.html)
