@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['initcontroller',['InitController',['../classROBOT__CONTROL__INTERFACE.html#a493784b75e5bad5648ccdbbc628dc649',1,'ROBOT_CONTROL_INTERFACE']]]
+  ['endcontroller_8',['EndController',['../classROBOT__CONTROL__INTERFACE.html#a3473556ac6a693f1371df6d7cb294e6b',1,'ROBOT_CONTROL_INTERFACE']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['robotstate',['RobotState',['../robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496',1,'robot_control.h']]]
+  ['controlstate_40',['ControlState',['../robot__control_8h.html#abb8cc74d1e81bc5d24e0a6d5ec462524',1,'robot_control.h']]]
 ];

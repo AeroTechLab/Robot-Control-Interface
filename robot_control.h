@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 //                                                                                   //
-//  Copyright (c) 2016-2018 Leonardo Consoni <consoni_2519@hotmail.com>              //
+//  Copyright (c) 2016-2020 Leonardo Consoni <leonardojc@protonmail.com>             //
 //                                                                                   //
 //  This file is part of Robot Control Interface.                                    //
 //                                                                                   //
@@ -37,22 +37,22 @@
 #include "plugin_loader/loader_macros.h"
 
 /// Defined possible control states enumeration. Passed to generic or plugin specific robot control implementations
-enum RobotState 
+enum ControlState 
 { 
-  ROBOT_PASSIVE,            ///< State for fully compliant robot control/behaviour
-  ROBOT_OFFSET,             ///< State for definition of reference (zero) for controller measurements 
-  ROBOT_CALIBRATION,        ///< State for definition of limits (min-max) for controller measurements 
-  ROBOT_PREPROCESSING,      ///< State for custom automatic preprocessing of controller parameters 
-  ROBOT_OPERATION,          ///< State for normal controller operation 
-  ROBOT_STATES_NUMBER       ///< Total number of control states 
+  CONTROL_PASSIVE,            ///< State for fully compliant robot control/behaviour
+  CONTROL_OFFSET,             ///< State for definition of reference (zero) for controller measurements 
+  CONTROL_CALIBRATION,        ///< State for definition of limits (min-max) for controller measurements 
+  CONTROL_PREPROCESSING,      ///< State for custom automatic preprocessing of controller parameters 
+  CONTROL_OPERATION,          ///< State for normal controller operation 
+  CONTROL_STATES_NUMBER       ///< Total number of control states 
 };
 
 /// Control used variables list indexes enumeration
-typedef struct RobotVariables
+typedef struct DoFVariables
 {
   double position, velocity, force, acceleration, inertia, stiffness, damping;
 }
-RobotVariables;
+DoFVariables;
 
 /// Robot control interface declaration macro, using [Plug-in Loader](https://github.com/EESC-MKGroup/Plugin-Loader) convention
 #define ROBOT_CONTROL_INTERFACE( Interface, INIT_FUNCTION ) \
@@ -62,8 +62,12 @@ RobotVariables;
         INIT_FUNCTION( const char**, Interface, GetJointNamesList, void ) \
         INIT_FUNCTION( size_t, Interface, GetAxesNumber, void ) \
         INIT_FUNCTION( const char**, Interface, GetAxisNamesList, void ) \
-        INIT_FUNCTION( void, Interface, SetControlState, enum RobotState ) \
-        INIT_FUNCTION( void, Interface, RunControlStep, RobotVariables**, RobotVariables**, RobotVariables**, RobotVariables**, double )
+        INIT_FUNCTION( void, Interface, SetControlState, enum ControlState ) \
+        INIT_FUNCTION( void, Interface, RunControlStep, DoFVariables**, DoFVariables**, DoFVariables**, DoFVariables**, double ) \
+        INIT_FUNCTION( size_t, Interface, GetExtraInputsNumber, void ) \
+        INIT_FUNCTION( void, Interface, SetExtraInputsList, double* ) \
+        INIT_FUNCTION( size_t, Interface, GetExtraOutputsNumber, void ) \
+        INIT_FUNCTION( void, Interface, GetExtraOutputsList, double* )
         
 #endif  // ROBOT_CONTROL_H
     
@@ -74,7 +78,7 @@ RobotVariables;
 /// @memberof ROBOT_CONTROL_INTERFACE
 /// @fn bool InitController( const char* configurationString )                                                                                
 /// @brief Calls plugin specific robot controller initialization  
-/// @param configurationString string containing the robot/plugin specific configuration
+/// @param[in] configurationString string containing the robot/plugin specific configuration       
 /// @return true on successful initialization, false otherwise  
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE
@@ -82,7 +86,7 @@ RobotVariables;
 /// @brief Calls plugin specific robot controller data deallocation                              
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE        
-/// @fn void RunControlStep( RobotVariables** jointMeasuresList, RobotVariables** axisMeasuresList, RobotVariables** jointSetpointsList, RobotVariables** axisSetpointsList, double timeDelta )                                                                        
+/// @fn void RunControlStep( DoFVariables** jointMeasuresList, DoFVariables** axisMeasuresList, DoFVariables** jointSetpointsList, DoFVariables** axisSetpointsList, double timeDelta )                                                                        
 /// @brief Calls plugin specific logic to process single control pass and joints/axes coordinate conversions
 /// @param[in,out] jointMeasuresList list of per degree-of-freedom control variables representing current robot joints measures                                    
 /// @param[in,out] axisMeasuresList list of per degree-of-freedom control variables representing current robot effector measures                                             
@@ -91,28 +95,48 @@ RobotVariables;
 /// @param[in] timeDelta time (in seconds) since the last control pass was called
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE        
-/// @fn void SetControlState( enum RobotState controlState )
+/// @fn void SetControlState( enum ControlState controlState )
 /// @brief Pass control state to trigger possible plugin specific behaviour
 /// @param[in] controlState member of state enumeration defined in control_definitions.h
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE        
 /// @fn size_t GetJointsNumber( void )
-/// @brief Get number of joint coordinates/degrees-of-freedom for given robot
+/// @brief Get plugin specific number of joint coordinates/degrees-of-freedom
 /// @return number of coordinates/degrees-of-freedom
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE        
-/// @fn char** GetJointNamesList( void )
-/// @brief Get names of all joints for given robot
+/// @fn const char** GetJointNamesList( void )
+/// @brief Get plugin specific names of all joints
 /// @return list of joint name strings
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE        
 /// @fn size_t GetAxesNumber( void )
-/// @brief Get number of axis coordinates/degrees-of-freedom for given robot
+/// @brief Get plugin specific number of axis coordinates/degrees-of-freedom
 /// @return number of coordinates/degrees-of-freedom
 ///           
 /// @memberof ROBOT_CONTROL_INTERFACE        
-/// @fn char** GetAxisNamesList( RobotController controller )
-/// @brief Get names of all axes for given robot
+/// @fn const char** GetAxisNamesList( void )
+/// @brief Get plugin specific names of all axes
 /// @return list of effector axis name strings
+///           
+/// @memberof ROBOT_CONTROL_INTERFACE        
+/// @fn size_t GetExtraInputsNumber( void )
+/// @brief Get number of additional inputs needed for the robot control
+/// @return number of additional inputs
+///           
+/// @memberof ROBOT_CONTROL_INTERFACE        
+/// @fn void SetExtraInputsList( double* inputsList )
+/// @brief Set list of additional inputs for the next robot control step
+/// @param[in] inputsList reference/pointer to list of addtional input values
+///           
+/// @memberof ROBOT_CONTROL_INTERFACE        
+/// @fn size_t GetExtraOutputsNumber( void )
+/// @brief Get number of additional outputs provided by the robot control
+/// @return number of additional outputs
+///           
+/// @memberof ROBOT_CONTROL_INTERFACE        
+/// @fn void GetExtraOutputsList( double* outputsList )
+/// @brief Get list of additional outputs from the last robot control step
+/// @param[in,out] outputsList reference/pointer to list of addtional output values
 ///
 /// @memberof ROBOT_CONTROL_INTERFACE

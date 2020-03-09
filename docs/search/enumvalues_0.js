@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['robot_5fcalibration',['ROBOT_CALIBRATION',['../robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496a5c1776b42b25dca07b29ce4a0750dcb1',1,'robot_control.h']]],
-  ['robot_5foffset',['ROBOT_OFFSET',['../robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496adeaf52743aa7cde9fa42fbb02fdcb3d6',1,'robot_control.h']]],
-  ['robot_5foperation',['ROBOT_OPERATION',['../robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496a263df6895eb32e3fef83d151148a1658',1,'robot_control.h']]],
-  ['robot_5fpassive',['ROBOT_PASSIVE',['../robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496a1b139c6e5971205d4c60a4e1b128663b',1,'robot_control.h']]],
-  ['robot_5fpreprocessing',['ROBOT_PREPROCESSING',['../robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496ac4eb0e1f8ed3c4b562d1d6962223c717',1,'robot_control.h']]],
-  ['robot_5fstates_5fnumber',['ROBOT_STATES_NUMBER',['../robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496a4979c5c4c20090a14c68a322d5b428e6',1,'robot_control.h']]]
+  ['control_5fcalibration_41',['CONTROL_CALIBRATION',['../robot__control_8h.html#abb8cc74d1e81bc5d24e0a6d5ec462524a034e1cb357a8482cc0a2f43734246b9d',1,'robot_control.h']]],
+  ['control_5foffset_42',['CONTROL_OFFSET',['../robot__control_8h.html#abb8cc74d1e81bc5d24e0a6d5ec462524ad9742f591fc97401363c38b3513a364e',1,'robot_control.h']]],
+  ['control_5foperation_43',['CONTROL_OPERATION',['../robot__control_8h.html#abb8cc74d1e81bc5d24e0a6d5ec462524ae1cec7383fa3db38b641176400dffb0f',1,'robot_control.h']]],
+  ['control_5fpassive_44',['CONTROL_PASSIVE',['../robot__control_8h.html#abb8cc74d1e81bc5d24e0a6d5ec462524aeec2d845696e07164d1100a72227916c',1,'robot_control.h']]],
+  ['control_5fpreprocessing_45',['CONTROL_PREPROCESSING',['../robot__control_8h.html#abb8cc74d1e81bc5d24e0a6d5ec462524ab02050ce9144fb73dbee7fcf49013144',1,'robot_control.h']]],
+  ['control_5fstates_5fnumber_46',['CONTROL_STATES_NUMBER',['../robot__control_8h.html#abb8cc74d1e81bc5d24e0a6d5ec462524a9ee1c5b11c6d35f8c676419580cd84c4',1,'robot_control.h']]]
 ];
