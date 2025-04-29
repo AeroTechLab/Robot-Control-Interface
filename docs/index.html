@@ -72,11 +72,11 @@ Overview</h1>
 <h2><a class="anchor" id="autotoc_md2"></a>
 The Joint/Axis Rationale</h2>
 <p>Sometimes, when controlling a robot, the positions/velocities/interaction forces of interest aren't the ones over which we have direct control, the actuated joints, like when there is a 2-link robotic arm with motors on each revolution joint but we wish to control the cartesian (<b>x</b>,<b>y</b>) position of the end-effector tool.</p>
-<p><img src="https://raw.githubusercontent.com/EESC-MKGroup/Robot-Control-Interface/master/docs/img/joints_axes.png" alt="" width="600" class="inline"/> </p>
+<p><img src="https://raw.githubusercontent.com/AeroTechLab/Robot-Control-Interface/master/docs/img/joints_axes.png" alt="" width="600" class="inline"/> </p>
 <p>In those cases, simple per actuator control isn't enough, as the variables of interest depend on the combination of all <b>joint</b> values. There's need for a higher-level control pass, that considers the robot kinematics/dynamics as a whole.</p>
 <p>In <b>Robot Control Interface</b>, those controlled robot variables/coordinates are named <b>axes</b> (as an analogy with joystick/gamepad axes that control motion). The higher-level control pass is responsible for performing conversions <b>from joint to axis space for measurement</b>, and <b>from axis to joint space for actuator control setpoint calculation</b>. It also involves things like <b>joint impedance estimation and modulation based on axes data</b> and <b>reading of extra sensors, that aren't components of joint actuators (like contact ones)</b>.</p>
 <p>With this, it is intended that robot control internals (for each plug-in implementation) are abstracted away, leaving the user/client to only worry about reading from joint/axes and writing to axes variables.</p>
-<p>As, from user's point of view, <b>axis</b> or <b>joint</b> control is fundamentally the same, they alse use <a href="https://eesc-mkgroup.github.io/Robot-Control-Interface/structRobotVariables.html">the same structure</a> of <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">double precision floating-point</a> control variables:</p>
+<p>As, from user's point of view, <b>axis</b> or <b>joint</b> control is fundamentally the same, they alse use <a href="https://AeroTechLab.github.io/Robot-Control-Interface/structRobotVariables.html">the same structure</a> of <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format">double precision floating-point</a> control variables:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadCenter">Position </th><th class="markdownTableHeadCenter">Velocity </th><th class="markdownTableHeadCenter">Force </th><th class="markdownTableHeadCenter">Acceleration </th><th class="markdownTableHeadCenter">Inertia </th><th class="markdownTableHeadCenter">Stiffness </th><th class="markdownTableHeadCenter">Damping  </th></tr>
@@ -85,17 +85,17 @@ The Joint/Axis Rationale</h2>
 </table>
 <h2><a class="anchor" id="autotoc_md3"></a>
 Robot State Control</h2>
-<p>The interface also has methods for setting different <a href="https://eesc-mkgroup.github.io/Robot-Control-Interface/robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496">states</a> for the robot control, whose behaviour can be implemented by the plug-in developer</p>
+<p>The interface also has methods for setting different <a href="https://AeroTechLab.github.io/Robot-Control-Interface/robot__control_8h.html#a8a4285c43463011b934d1dc0a3859496">states</a> for the robot control, whose behaviour can be implemented by the plug-in developer</p>
 <h1><a class="anchor" id="autotoc_md4"></a>
 Usage</h1>
-<p>On a terminal, get the <a href="https://github.com/EESC-MKGroup/Robot-Control-Interface">GitHub code repository</a> with: </p><pre class="fragment">$ git clone https://github.com/EESC-MKGroup/Robot-Control-Interface [&lt;my_project_folder&gt;]
-</pre><p>This code is dependent on macros from <a href="https://github.com/EESC-MKGroup/Plugin-Loader">Plug-in Loader</a> project, that is automatically linked as a <a href="https://chrisjean.com/git-submodules-adding-using-removing-and-updating/">git submodule</a>.</p>
+<p>On a terminal, get the <a href="https://github.com/AeroTechLab/Robot-Control-Interface">GitHub code repository</a> with: </p><pre class="fragment">$ git clone https://github.com/AeroTechLab/Robot-Control-Interface [&lt;my_project_folder&gt;]
+</pre><p>This code is dependent on macros from <a href="https://github.com/AeroTechLab/Plugin-Loader">Plug-in Loader</a> project, that is automatically linked as a <a href="https://chrisjean.com/git-submodules-adding-using-removing-and-updating/">git submodule</a>.</p>
 <p>To add that repository to your sources, navigate to the root project folder and clone it with: </p><pre class="fragment">$ cd &lt;my_project_folder&gt;
 $ git submodule update --init
 </pre><p><b>Robot Control Interface</b> itself consists of a single header file of common variables and function declarations. Simply include it in both plug-in and host projects</p>
 <h1><a class="anchor" id="autotoc_md5"></a>
 Documentation</h1>
-<p>Doxygen-generated detailed methods documentation is available on a <a href="https://eesc-mkgroup.github.io/Robot-Control-Interface/classROBOT__CONTROL__INTERFACE.html">GitHub Page</a> </p>
+<p>Doxygen-generated detailed methods documentation is available on a <a href="https://AeroTechLab.github.io/Robot-Control-Interface/classROBOT__CONTROL__INTERFACE.html">GitHub Page</a> </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
